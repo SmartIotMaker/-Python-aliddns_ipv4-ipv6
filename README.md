@@ -32,7 +32,7 @@ pip install requests
 通过本命令获取 ddns-aliyun
 
 ```bash
-git clone https://github.com/dingguotu/ddns-aliyun.git
+git clone https://github.com/SmartIotMaker/Python-aliddns_ipv4-ipv6.git
 ```
 
 ---
