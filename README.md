@@ -21,11 +21,10 @@ pip install requests
 ## 前置条件
 
 1. Git
-2. python 3.*
+2. python 3.5
 3. 阿里云账号
 
 ## 使用方法
-已经在python 3.5
 
 ---
 
