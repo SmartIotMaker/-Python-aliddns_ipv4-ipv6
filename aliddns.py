@@ -38,9 +38,9 @@ def isexitdomain(DomainName, SubDomain,Type):  # 查看域名记录是否存在
     response = client.do_action_with_exception(request)  # 获取域名解析记录列表
     domain_list = json.loads(response)  # 将返回的JSON数据转化为Python能识别的
     if domain_list['TotalCount'] == 0:
-        return false
+        return false,"",0
     elif :
-        return true
+        return true,domain_list['DomainRecords']['Record'][0]['Value'],domain_list['DomainRecords']['Record'][0]['RecordId']
     
 def initAliddnsApi(accessKeyId, accessSecret):  # 初始化
     client = AcsClient(accessKeyId, accessSecret, 'cn-hangzhou')
