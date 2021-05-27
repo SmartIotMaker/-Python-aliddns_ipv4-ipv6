@@ -1,7 +1,7 @@
-# Python实现阿里云域名DDNS支持ipv4和ipv6
+# Python实现阿里云域名DDNS
 
 感谢两位大神：
-1. https://github.com/dingguotu/ddns-aliyu.git
+1. https://github.com/dingguotu/ddns-aliyu
 2. https://github.com/zeruns/-Python-aliddns_ipv4-ipv6
 
 
