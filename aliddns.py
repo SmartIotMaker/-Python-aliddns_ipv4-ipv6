@@ -10,6 +10,7 @@ import json
 global client
 
 def update(RecordId, RR, Type, Value):  # 修改域名解析记录
+    global client
     from aliyunsdkalidns.request.v20150109.UpdateDomainRecordRequest import UpdateDomainRecordRequest
     request = UpdateDomainRecordRequest()
     request.set_accept_format('json')
@@ -21,6 +22,7 @@ def update(RecordId, RR, Type, Value):  # 修改域名解析记录
 
 
 def add(DomainName, RR, Type, Value):  # 添加新的域名解析记录
+    global client
     from aliyunsdkalidns.request.v20150109.AddDomainRecordRequest import AddDomainRecordRequest
     request = AddDomainRecordRequest()
     request.set_accept_format('json')
@@ -31,17 +33,19 @@ def add(DomainName, RR, Type, Value):  # 添加新的域名解析记录
     response = client.do_action_with_exception(request)
 
 def isexitdomain(DomainName, SubDomain):  # 查看域名记录是否存在
+    global client
     request = DescribeSubDomainRecordsRequest()
     request.set_accept_format('json')
-    request.set_DomainName(domain)
-    request.set_SubDomain(name_ipv4 + '.' + domain)
+    request.set_DomainName(DomainName)
+    request.set_SubDomain(SubDomain + '.' + DomainName)
     response = client.do_action_with_exception(request)  # 获取域名解析记录列表
-    domain_list = json.loads(response)  # 将返回的JSON数据转化为Python能识别的
+    domain_list = json.loads(response.decode())  # 将返回的JSON数据转化为Python能识别的
     if domain_list['TotalCount'] == 0:
-        return false,"",0
+        return False,"",0
     else:
-        return true,domain_list['DomainRecords']['Record'][0]['Value'],domain_list['DomainRecords']['Record'][0]['RecordId']
+        return True,domain_list['DomainRecords']['Record'][0]['Value'],domain_list['DomainRecords']['Record'][0]['RecordId']
     
 def initAliddnsApi(accessKeyId, accessSecret):  # 初始化
+    global client
     client = AcsClient(accessKeyId, accessSecret, 'cn-hangzhou')
 
