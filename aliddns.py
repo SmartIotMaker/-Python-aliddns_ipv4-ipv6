@@ -7,6 +7,8 @@ import requests
 from urllib.request import urlopen
 import json
 
+global client
+
 def update(RecordId, RR, Type, Value):  # 修改域名解析记录
     from aliyunsdkalidns.request.v20150109.UpdateDomainRecordRequest import UpdateDomainRecordRequest
     request = UpdateDomainRecordRequest()
@@ -40,6 +42,6 @@ def isexitdomain(DomainName, SubDomain,Type):  # 查看域名记录是否存在
     elif :
         return true
     
-def initAliddnsApi(accessKeyId, accessSecret,domain):  # 初始化
-    global client = AcsClient(accessKeyId, accessSecret, 'cn-hangzhou')
+def initAliddnsApi(accessKeyId, accessSecret):  # 初始化
+    client = AcsClient(accessKeyId, accessSecret, 'cn-hangzhou')
 
