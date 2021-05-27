@@ -18,17 +18,15 @@ Headers = {
 
 def ddns(domain):
     for sub_domain in domain['sub_domains']:
-        print(f"domain={domain['name']} sub_domain={sub_domain}")
         isexitflag,recordip,recordid = aliddns.isexitdomain(domain['name'], sub_domain)
-        print("1\n")
         if isexitflag == False:
-            # logging.info(f"Begin add [{sub_domain}.{domain['name']}].")
+            logging.info(f"Begin add [{sub_domain}.{domain['name']}].")
             aliddns.add(domain['name'], sub_domain, "A", LocalIP)
         elif recordip.strip() != LocalIP.strip():
-            # logging.info(f"Begin update [{sub_domain}.{domain['name']}].")
+            logging.info(f"Begin update [{sub_domain}.{domain['name']}].")
             aliddns.update(recordip, sub_domain, "A", LocalIP)
         else:
-            logging.info("Need upgrade.")
+            logging.info(f"Ip isn't change,so no need to upgrade.")
 
 def get_ip():
     global LocalIP

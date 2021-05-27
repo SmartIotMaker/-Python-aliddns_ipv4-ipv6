@@ -1,0 +1,11 @@
+[Unit]
+Description=ddns-aliyun
+
+[Service]
+User=pi
+Group=pi
+Type=idle
+ExecStart=/home/pi/Python-aliddns_ipv4-ipv6/autorun.sh
+
+[Install]
+WantedBy=multi-user.target
