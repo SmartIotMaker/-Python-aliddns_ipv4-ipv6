@@ -75,5 +75,10 @@ ns2.alidns.com
 
 ---
 
+## 开机启动
+1. 拷贝`ddns_aliyun.service` 到树莓派的`/usr/lib/systemd/system/ddns_aliyun.service`
+2. 运行`sudo systemctl enable ddns_aliyun` 设置开机启动服务
+3. 运行`sudo systemctl start ddns_aliyun` 运行服务
 
+说明：autorun.sh脚本每1小时更新一次
 
