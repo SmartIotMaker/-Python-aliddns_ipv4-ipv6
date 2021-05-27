@@ -1,9 +1,10 @@
 #!/usr/bin/python
-# -*- coding: UTF-8 -*-
+# -*- coding: future_fstrings -*-thing='world'print(f'hello {thing}')
 from urllib import request
 import re, json, os, logging
 import aliddns
 import logger
+
 
 global LocalIP
 global Access_Key_Id
@@ -23,9 +24,9 @@ def ddns(domain):
             aliddns.add(domain['name'], sub_domain, "A", LocalIP)
         elif recordip.strip() != LocalIP.strip():
             logging.info(f"Begin update [{sub_domain}.{domain['name']}].")
-            update(recordip, sub_domain, "A", LocalIP)
+            aliddns.update(recordip, sub_domain, "A", LocalIP)
         else:
-            logging.info(f"Need upgrade.")
+            logging.info("Need upgrade.")
 
 def get_ip():
     global LocalIP

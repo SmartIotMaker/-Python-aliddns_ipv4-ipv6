@@ -30,7 +30,7 @@ def add(DomainName, RR, Type, Value):  # 添加新的域名解析记录
     request.set_Value(Value)
     response = client.do_action_with_exception(request)
 
-def isexitdomain(DomainName, SubDomain,Type):  # 查看域名记录是否存在
+def isexitdomain(DomainName, SubDomain):  # 查看域名记录是否存在
     request = DescribeSubDomainRecordsRequest()
     request.set_accept_format('json')
     request.set_DomainName(domain)
@@ -39,7 +39,7 @@ def isexitdomain(DomainName, SubDomain,Type):  # 查看域名记录是否存在
     domain_list = json.loads(response)  # 将返回的JSON数据转化为Python能识别的
     if domain_list['TotalCount'] == 0:
         return false,"",0
-    elif :
+    else:
         return true,domain_list['DomainRecords']['Record'][0]['Value'],domain_list['DomainRecords']['Record'][0]['RecordId']
     
 def initAliddnsApi(accessKeyId, accessSecret):  # 初始化

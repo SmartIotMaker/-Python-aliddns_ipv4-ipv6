@@ -1,3 +1,4 @@
+# -*- coding: future_fstrings -*-thing='world'print(f'hello {thing}')
 import json
 import logging.config
 import os
