@@ -24,9 +24,9 @@ def ddns(domain):
             aliddns.add(domain['name'], sub_domain, "A", LocalIP)
         elif recordip.strip() != LocalIP.strip():
             logging.info(f"Begin update [{sub_domain}.{domain['name']}].")
-            aliddns.update(recordip, sub_domain, "A", LocalIP)
+            aliddns.update(recordid, sub_domain, "A", LocalIP)
         else:
-            logging.info(f"Ip isn't change,so no need to upgrade.")
+            print(f"Ip isn't change,so no need to upgrade.")
 
 def get_ip():
     global LocalIP
